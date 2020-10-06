@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { UserData } from '../../providers/user-data';
 
-import { UserOptions } from '../../interfaces/user-options';
 
 
 
@@ -14,7 +13,7 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./signup.scss'],
 })
 export class SignupPage {
-  signup: UserOptions = { username: '', password: '' };
+  signup = { username: '', password: '' };
   submitted = false;
 
   constructor(
