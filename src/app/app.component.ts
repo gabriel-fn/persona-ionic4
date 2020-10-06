@@ -2,12 +2,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 
-import { MenuController, Platform, ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
 
@@ -28,23 +27,16 @@ export class AppComponent implements OnInit {
       title: 'Speakers',
       url: '/app/tabs/speakers',
       icon: 'people'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
     }
   ];
   loggedIn = false;
   dark = false;
 
   constructor(
-    private menu: MenuController,
     private platform: Platform,
     private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storage: Storage,
     private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
@@ -114,11 +106,5 @@ export class AppComponent implements OnInit {
     this.userData.logout().then(() => {
       return this.router.navigateByUrl('/app/tabs/schedule');
     });
-  }
-
-  openTutorial() {
-    this.menu.enable(false);
-    this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
   }
 }
