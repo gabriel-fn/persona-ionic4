@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private readonly HAS_TOKEN: string = 'persona_token';
-  private _token: Token = null;
 
   constructor(
     private storage: Storage,
@@ -25,7 +24,7 @@ export class AuthService {
   ) { console.log('iniciado serviço auth'); }
 
 
-  getUser(token: Token): Observable<any> {
+  getUser(): Observable<any> {
     return this.http.get(`${environment.baseUrl}/api/user`);
   }
 
@@ -37,19 +36,21 @@ export class AuthService {
 
   login(username, password) {
     this.http.post<Token>(`${environment.baseUrl}/oauth/token`, new PasswordClient(username, password))
-    .subscribe(async (token: Token) => {
+    .subscribe((token: Token) => {
       console.log(token);
-      await this.setToken(token);
-      this.router.navigateByUrl('');
-    },
-    (error: HttpErrorResponse) => {
-      console.log(error);
+      this.setToken(token).then(() => {
+        window.dispatchEvent(new CustomEvent('user:login'));
+        this.router.navigateByUrl('');
+      });
     });
   }
 
-  async logout(): Promise<any> {
-    await this.removeToken();
-    this.router.navigate(['login']);
+  logout(): Promise<any> {
+    return this.removeToken().then(() => {
+      window.dispatchEvent(new CustomEvent('user:logout'));
+      this.router.navigate(['login']);
+    });
+    
   }
 
   /*
@@ -66,21 +67,15 @@ export class AuthService {
     return false;
   }
 
-  async getToken(): Promise<Token> {
-    if (this._token) {
-      return this._token;
-    } else {
-      return this._token = await this.storage.get(this.HAS_TOKEN);
-    }
+  getToken(): Promise<Token> {
+    return this.storage.get(this.HAS_TOKEN);
   }
 
   setToken(token: Token): Promise<any> {
-    this._token = token;
     return this.storage.set(this.HAS_TOKEN, token); 
   }
 
   removeToken(): Promise<any> {
-    this._token = null;
     return this.storage.remove(this.HAS_TOKEN);
   }
 

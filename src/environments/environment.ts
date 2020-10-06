@@ -15,7 +15,7 @@ export const environment = {
   */
   grant_type: "password",
   client_id: 2,
-  client_secret: "EwHm4eEmlWpFuDbBvxpjQWS9LlQgCsJbLZRRKWUG",
+  client_secret: "Yvn8jlQ6Zrqc9lDu9MtShNA3N4G0Qv7adQu4Hsa2",
   scope: ""
 };
 

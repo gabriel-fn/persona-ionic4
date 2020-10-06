@@ -1,14 +1,11 @@
+import { AuthService } from './auth/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 
 import { Platform, ToastController } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-
-import { UserData } from './providers/user-data';
 
 @Component({
   selector: 'app-root',
@@ -34,12 +31,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private platform: Platform,
-    private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
+    private authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -77,7 +73,7 @@ export class AppComponent implements OnInit {
   }
 
   checkLoginStatus() {
-    return this.userData.isLoggedIn().then(loggedIn => {
+    return this.authService.isLoggedIn().then(loggedIn => {
       return this.updateLoggedInStatus(loggedIn);
     });
   }
@@ -103,8 +99,6 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
-    });
+    this.authService.logout();
   }
 }

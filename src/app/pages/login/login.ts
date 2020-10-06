@@ -1,11 +1,7 @@
+import { AuthService } from './../../auth/auth.service';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { UserData } from '../../providers/user-data';
-
-import { UserOptions } from '../../interfaces/user-options';
-
 
 
 @Component({
@@ -14,20 +10,16 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./login.scss'],
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
-  submitted = false;
+  login = { email: '', password: '' };
 
   constructor(
-    public userData: UserData,
-    public router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   onLogin(form: NgForm) {
-    this.submitted = true;
-
     if (form.valid) {
-      this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.authService.login(form.value['email'], form.value['password']);
     }
   }
 
