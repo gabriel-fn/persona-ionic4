@@ -22,9 +22,10 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
-  },  {
-    path: 'persona-list',
-    loadChildren: () => import('./pages/persona-list/persona-list.module').then( m => m.PersonaListPageModule)
+  },
+  {
+    path: 'personas',
+    loadChildren: () => import('./pages/persona-list/persona-list.module').then( m => m.PersonaListModule)
   }
 
 ];

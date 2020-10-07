@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
+import { PersonaService } from './providers/persona.service';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar],
+  providers: [InAppBrowser, SplashScreen, StatusBar, PersonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
