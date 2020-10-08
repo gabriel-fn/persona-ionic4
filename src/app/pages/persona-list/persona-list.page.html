@@ -15,15 +15,12 @@
     <ion-toolbar>
       <ion-title size="large">Personas 2</ion-title>
     </ion-toolbar>
-    <ion-toolbar>
-      <ion-searchbar placeholder="Search"></ion-searchbar>
-    </ion-toolbar>
   </ion-header>
 
   <ion-list [hidden]="personas.length === 0">
 
       <ion-item-sliding *ngFor="let persona of personas">
-        <ion-item>
+        <ion-item routerLink="/personas/{{persona.id}}">
           <ion-label>
             <h3>{{persona.nome}}</h3>
             <p>

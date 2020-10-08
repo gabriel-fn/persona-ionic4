@@ -19,4 +19,8 @@ export class PersonaService {
   getAllPersonas(): Observable<HttpSuccessResponse> {
     return this.http.get<HttpSuccessResponse>(`${environment.baseUrl}/api/personas`);
   }
+
+  getPersona(id: string): Observable<HttpSuccessResponse> {
+    return this.http.get<HttpSuccessResponse>(`${environment.baseUrl}/api/personas/${id}`);
+  }
 }
