@@ -6,8 +6,11 @@ import { IonicModule } from '@ionic/angular';
 import { PersonaDetailPageRoutingModule } from './persona-detail-routing.module';
 
 import { PersonaDetailPage } from './persona-detail.page';
-import { PersonaNpComponent } from './components/persona-np.component';
-import { PersonaCardComponent } from './components/persona-card.component';
+import { NpPersonaComponent } from './components/np-persona.component';
+import { CardPersonaComponent } from './components/card-persona.component';
+import { AbilityPersonaComponent } from './components/ability-persona.component';
+import { TruncateNumberPipe } from './pipes/truncate-number.pipe';
+import { AttributePersonaComponent } from './components/attribute-persona.component';
 
 @NgModule({
   imports: [
@@ -18,8 +21,11 @@ import { PersonaCardComponent } from './components/persona-card.component';
   ],
   declarations: [
     PersonaDetailPage,
-    PersonaCardComponent,
-    PersonaNpComponent
+    CardPersonaComponent,
+    NpPersonaComponent,
+    AbilityPersonaComponent,
+    AttributePersonaComponent,
+    TruncateNumberPipe
   ]
 })
 export class PersonaDetailModule {}

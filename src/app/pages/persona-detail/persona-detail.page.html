@@ -16,7 +16,7 @@
 
         <!--Open Header Part-->
         <ion-col size="12">
-          <persona-card label="Cabeçalho" [points]="persona.totalPoints.all">
+          <card-persona label="Cabeçalho" [points]="persona.totalPoints.all">
             <ion-row>
               <ion-col size="12" size-ms="4" size-md="4" size-lg="4" size-xl="4">
                 <ion-item>
@@ -25,7 +25,7 @@
                 </ion-item>
               </ion-col>
               <ion-col size="12" size-ms="4" size-md="4" size-lg="4" size-xl="4">
-                <persona-np [(ngModel)]="persona.np" name="np"></persona-np>
+                <np-persona [(ngModel)]="persona.np" name="np"></np-persona>
               </ion-col>
               <ion-col size="12" size-ms="4" size-md="4" size-lg="4" size-xl="4">
                 <ion-item>
@@ -34,9 +34,40 @@
                 </ion-item>
               </ion-col>
             </ion-row>
-          </persona-card>
+          </card-persona>
         </ion-col>  
         <!--Close Header Part-->
+
+        <!-- Open Habilidade Part -->
+        <ion-col col-12>
+          <card-persona label="Habilidades" [points]="persona.totalPoints.habilidade">
+            <ion-row>
+              <ion-col  size="6" size-ms="6" size-md="4" size-lg="4" size-xl="2"
+                        *ngFor="let abilityKey of persona.abilityKeys">
+                <ability-persona  [label]="abilityKey.label" 
+                                  [(ngModel)]="persona[abilityKey.name]" name="{{abilityKey.name}}">
+                </ability-persona>
+              </ion-col>
+            </ion-row>
+          </card-persona>
+        </ion-col>
+        <!-- Close Habilidade Part -->
+
+        <!-- Open Combate Part -->
+        <ion-col size="12">
+          <card-persona label="Combate" [points]="persona.totalPoints.combate">
+            <ion-row>
+              <ion-col  size="12" size-ms="6" size-md="6" size-lg="6" size-xl="6"
+                        *ngFor="let combatKey of persona.combatKeys">
+                <attribute-persona  [label]="combatKey.label"
+                                    [(ngModel)]="persona[combatKey.name]" name="{{combatKey.name}}">
+                  ({{persona.bonusPoints[combatKey.name]|truncateNumber}})
+                </attribute-persona>
+              </ion-col>
+            </ion-row>
+          </card-persona>
+        </ion-col>
+        <!-- Close Combate Part -->        
 
       </ion-row>
     </form>
