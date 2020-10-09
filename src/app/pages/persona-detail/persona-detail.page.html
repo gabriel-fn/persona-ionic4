@@ -69,6 +69,22 @@
         </ion-col>
         <!-- Close Combate Part -->        
 
+        <!-- Open Salvamento Part -->
+        <ion-col size="12">
+          <card-persona label="Salvamentos" [points]="persona.totalPoints.salvamento">
+            <ion-row>
+              <ion-col  size="12" size-ms="6" size-md="6" size-lg="6" size-xl="6"
+                        *ngFor="let savingKey of persona.savingKeys">
+                <attribute-persona  [label]="savingKey.label" 
+                                    [(ngModel)]="persona[savingKey.name]" name="{{savingKey.name}}">
+                  ({{persona.bonusPoints[savingKey.name]|truncateNumber}})
+                </attribute-persona>
+              </ion-col>
+            </ion-row>
+          </card-persona>
+        </ion-col>
+        <!-- Close Salvamento Part -->
+
       </ion-row>
     </form>
   </ion-grid>
