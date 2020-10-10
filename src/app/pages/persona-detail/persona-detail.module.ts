@@ -11,6 +11,8 @@ import { CardPersonaComponent } from './components/card-persona.component';
 import { AbilityPersonaComponent } from './components/ability-persona.component';
 import { TruncateNumberPipe } from './pipes/truncate-number.pipe';
 import { AttributePersonaComponent } from './components/attribute-persona.component';
+import { DinamicListPersonaComponent } from './components/dinamic-list-persona';
+import { ModalAttributeComponent } from './modals/modal-attribute';
 
 @NgModule({
   imports: [
@@ -25,7 +27,10 @@ import { AttributePersonaComponent } from './components/attribute-persona.compon
     NpPersonaComponent,
     AbilityPersonaComponent,
     AttributePersonaComponent,
+    DinamicListPersonaComponent,
+    ModalAttributeComponent,
     TruncateNumberPipe
-  ]
+  ],
+  entryComponents: [ModalAttributeComponent]
 })
 export class PersonaDetailModule {}

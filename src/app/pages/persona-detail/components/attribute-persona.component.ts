@@ -37,9 +37,7 @@ export class AttributePersonaComponent implements ControlValueAccessor {
   private onChange;
   public value: number;
 
-  constructor() {
-    console.log('Hello AttributePersonaComponent Component');
-  }
+  constructor() { }
 
   increment(): void {
     if (!this.max || this.value < this.max) {

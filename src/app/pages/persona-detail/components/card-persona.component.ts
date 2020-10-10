@@ -5,7 +5,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
   selector: 'card-persona',
   template: `
     <ion-card>
-      <ion-card-header (click)="content.hidden = !content.hidden" text-center>
+      <ion-card-header (click)="content.hidden = !content.hidden">
         <a>
           {{ label }}
           <span *ngIf="points || points == 0">({{ points }}pp)</span>

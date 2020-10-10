@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  {{persona | json}}
 
   <ion-grid *ngIf="persona">
     <form #personaForm="ngForm" novalidate>
@@ -39,7 +38,7 @@
         <!--Close Header Part-->
 
         <!-- Open Habilidade Part -->
-        <ion-col col-12>
+        <ion-col size="12">
           <card-persona label="Habilidades" [points]="persona.totalPoints.habilidade">
             <ion-row>
               <ion-col  size="6" size-ms="6" size-md="4" size-lg="4" size-xl="2"
@@ -85,8 +84,23 @@
         </ion-col>
         <!-- Close Salvamento Part -->
 
+        <!-- Open Feito Part -->
+        <ion-col size="12">
+          <card-persona label="Feitos" [points]="persona.totalPoints.feito">
+            <dinamic-list-persona itemsType="feitos" [(ngModel)]="persona.feitos" name="feitos">
+            </dinamic-list-persona>
+          </card-persona>
+        </ion-col>
+        <!-- Close Feito Part -->
+
       </ion-row>
     </form>
+    {{persona.feitos | json}}
+    <br><br><br><br>
+    {{personaForm.value['feitos'] | json}}
   </ion-grid>
+
+  
+
 
 </ion-content>
