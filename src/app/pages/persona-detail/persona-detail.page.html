@@ -93,6 +93,26 @@
         </ion-col>
         <!-- Close Feito Part -->
 
+        <!-- Open Pericia Part -->
+        <ion-col size="12">
+          <card-persona label="Pericias" [points]="persona.totalPoints.pericia">
+            <dinamic-list-persona itemsType="pericias" [bonus]="persona.bonusPoints"
+                                  [(ngModel)]="persona.pericias" name="pericias">
+            </dinamic-list-persona>
+          </card-persona>
+        </ion-col>
+        <!-- Close Pericia Part -->
+
+        <!-- Open Desvantagem Part -->
+        <ion-col size="12">
+          <card-persona label="Desvantagens" [points]="(persona.totalPoints.desvantagem * -1)">
+            <dinamic-list-persona itemsType="desvantagens" [(ngModel)]="persona.desvantagens" 
+                                  name="desvantagens">
+            </dinamic-list-persona>
+          </card-persona>
+        </ion-col>
+        <!-- Close Desvantagem Part --> 
+
       </ion-row>
     </form>
     {{persona.feitos | json}}
