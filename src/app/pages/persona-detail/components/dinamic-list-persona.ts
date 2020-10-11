@@ -71,7 +71,7 @@ export class DinamicListPersonaComponent implements ControlValueAccessor {
   }
 
   async presentModalAttribute() {
-    let modal = await this.modalCtrl.create({
+    const modal = await this.modalCtrl.create({
       component: ModalAttributeComponent,
       componentProps: {'items': this.itemsList}
     });
