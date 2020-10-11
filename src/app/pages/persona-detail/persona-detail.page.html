@@ -84,6 +84,15 @@
         </ion-col>
         <!-- Close Salvamento Part -->
 
+        <!-- Open Poder Part -->
+        <ion-col size="12">
+          <card-persona label="Poderes" [points]="persona.totalPoints.poder">
+            <dinamic-list-power [(ngModel)]="persona.poderes" name="poderes">    
+            </dinamic-list-power>
+          </card-persona>
+        </ion-col>
+        <!-- Close Poder Part -->          
+
         <!-- Open Feito Part -->
         <ion-col size="12">
           <card-persona label="Feitos" [points]="persona.totalPoints.feito">
@@ -115,12 +124,10 @@
 
       </ion-row>
     </form>
-    {{persona.feitos | json}}
     <br><br><br><br>
-    {{personaForm.value['feitos'] | json}}
+    {{persona.poderes | json}}
+    <br><br><br><br>
+    {{personaForm.value['poderes'] | json}}
   </ion-grid>
-
-  
-
 
 </ion-content>
