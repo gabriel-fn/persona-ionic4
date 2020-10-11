@@ -10,7 +10,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'np-persona',
   template: `
-    <ion-item-divider>
+    <ion-item>
       <ion-label>Nível de Campanha</ion-label>
       <ion-select [(ngModel)]="npValue" interface="popover">
         <ion-select-option *ngFor="let valueOption of valueOptions" 
@@ -18,7 +18,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
           {{valueOption}}
         </ion-select-option>
       </ion-select>
-    </ion-item-divider>
+    </ion-item>
   `,
   providers:[CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
