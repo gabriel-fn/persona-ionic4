@@ -6,11 +6,11 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
   template: `
     <ion-card>
       <ion-card-header (click)="content.hidden = !content.hidden">
-        <a>
+        <ion-card-title>
           {{ label }}
           <span *ngIf="points || points == 0">({{ points }}pp)</span>
           <ion-icon [name]="(content.hidden)?'arrow-down':'arrow-up'"></ion-icon>
-        </a>
+        </ion-card-title>
       </ion-card-header>
       <div #content>
         <ng-content></ng-content>
