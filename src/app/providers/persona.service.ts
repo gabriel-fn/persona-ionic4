@@ -1,3 +1,4 @@
+import { Persona } from './../interfaces/persona';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -20,7 +21,20 @@ export class PersonaService {
     return this.http.get<HttpSuccessResponse>(`${environment.baseUrl}/api/personas`);
   }
 
-  getPersona(id: string): Observable<HttpSuccessResponse> {
+  get(id: string): Observable<HttpSuccessResponse> {
     return this.http.get<HttpSuccessResponse>(`${environment.baseUrl}/api/personas/${id}`);
   }
+
+  save(persona: Persona): Observable<HttpSuccessResponse> {
+    if(persona.id){
+      return this.http.put<HttpSuccessResponse>(`${environment.baseUrl}/api/personas/${persona.id}`, persona);
+    }else{
+      return this.http.post<HttpSuccessResponse>(`${environment.baseUrl}/api/personas`, persona);
+    }
+  }
+
+  delete(id: number): Observable<HttpSuccessResponse> {
+    return this.http.delete<HttpSuccessResponse>(`${environment.baseUrl}/api/personas/${id}`);
+  }
+
 }

@@ -22,7 +22,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
       </ion-fab-button>
     </ion-fab>
     <ion-row>
-        <ion-col size="12" size-ms="6" size-md="6" size-lg="4" size-xl="4"
+        <ion-col size="12" size-ms="6" size-md="6" size-lg="6" size-xl="6"
                     *ngFor="let power of powers"
         >
             <ion-card (click)="presentModalPowerDetails(power)"

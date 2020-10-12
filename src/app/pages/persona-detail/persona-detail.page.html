@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <!--ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons-->
     <ion-title *ngIf="persona">{{persona.nome}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="'/personas'"></ion-back-button>
@@ -11,6 +14,7 @@
 
   <ion-grid *ngIf="persona">
     <form #personaForm="ngForm" novalidate>
+      <ion-input [hidden]="true" [ngModel]="persona.id" name="id" type="number"></ion-input>
       <ion-row>
 
         <!--Open Header Part-->
@@ -123,11 +127,31 @@
         <!-- Close Desvantagem Part --> 
 
       </ion-row>
+
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="primary">
+          <ion-icon name="person"></ion-icon>
+        </ion-fab-button>
+        <!-- <ion-fab-list side="left">
+          <ion-fab-button color="danger" (click)="createPersonaPDF()"> 
+            PDF
+          </ion-fab-button>
+        </ion-fab-list> -->
+        <ion-fab-list side="bottom">
+          <ion-fab-button color="secondary" (click)="savePersona(personaForm)"> 
+            <ion-icon name="cloud-upload"></ion-icon>
+          </ion-fab-button>
+    
+          <ion-fab-button color="primary" (click)="presentModalPersona(personaForm)"> 
+            <ion-icon name="book"></ion-icon>
+          </ion-fab-button>
+    
+          <ion-fab-button color="danger" (click)="deletePersona(personaForm)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
     </form>
-    <br><br><br><br>
-    {{persona.poderes | json}}
-    <br><br><br><br>
-    {{personaForm.value['poderes'] | json}}
   </ion-grid>
 
 </ion-content>

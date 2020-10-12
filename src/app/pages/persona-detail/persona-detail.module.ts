@@ -16,6 +16,7 @@ import { ModalAttributeComponent } from './modals/modal-attribute';
 import { DinamicListPowerComponent } from './components/dinamic-list-power';
 import { ModalPowerComponent } from './modals/modal-power';
 import { ModalPowerDetailsComponent } from './modals/modal-power-details';
+import { ModalPersonaComponent } from './modals/modal-persona';
 
 @NgModule({
   imports: [
@@ -35,12 +36,14 @@ import { ModalPowerDetailsComponent } from './modals/modal-power-details';
     DinamicListPowerComponent,
     ModalPowerComponent,
     ModalPowerDetailsComponent,
+    ModalPersonaComponent,
     TruncateNumberPipe
   ],
   entryComponents: [
     ModalAttributeComponent,
     ModalPowerComponent,
-    ModalPowerDetailsComponent
+    ModalPowerDetailsComponent,
+    ModalPersonaComponent
   ]
 })
 export class PersonaDetailModule {}
